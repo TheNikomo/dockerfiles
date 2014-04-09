@@ -1,17 +1,18 @@
 # ircd-hybrid
 #
-# VERSION               0.0.1
+# VERSION               1.0.0
 
 FROM debian
 MAINTAINER Niko Montonen "nikomo@nikomo.fi"
 
-CMD apt-get update && apt-get dist-upgrade -y
-CMD apt-get update && apt-get install -y nano dialog irssi ircd-hybrid supervisor
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y nano dialog irssi ircd-hybrid supervisor
 
-CMD rm /etc/ircd-hybrid/ircd.conf
+RUN rm /etc/ircd-hybrid/ircd.conf
 ADD ircd.conf /etc/ircd-hybrid/ircd.conf
-CMD chmod 660 /etc/ircd-hybrid/ircd.conf
-CMD chown irc:irc /etc/ircd-hybrid/ircd.conf
+RUN chmod 660 /etc/ircd-hybrid/ircd.conf
+RUN chown irc:irc /etc/ircd-hybrid/ircd.conf
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD /usr/bin/supervisord
