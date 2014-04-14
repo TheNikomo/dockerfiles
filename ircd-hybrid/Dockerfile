@@ -7,7 +7,7 @@ MAINTAINER Niko Montonen "nikomo@nikomo.fi"
 
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y ircd-hybrid supervisor
+RUN apt-get install -y nano dialog irssi ircd-hybrid supervisor
 
 RUN rm /etc/ircd-hybrid/ircd.conf
 ADD ircd.conf /etc/ircd-hybrid/ircd.conf
